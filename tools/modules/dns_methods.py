@@ -1,45 +1,39 @@
-import socket # Importa a biblioteca socket
-import dns.resolver # Importa a biblioteca dns.resolver
+import socket
+import dns.resolver
 
    
-# Método para resolver subdomínios e obter IPs    
+# This methods resolves subdomains and get IPs with treatmenting for possible errors   
 def dnsresolver1():
     print("Enter the domain: ")
-    domain = input()#Solicita o domínio ao usuário
-    #Abre o arquivo dns_dict1.txt com os subdomínios
-    with open('./DNS_Tools/Dictionary/dns_dict1.txt', 'r') as dict:
-        dictionary = dict.readlines() # Lê as linhas do arquivo
-        for line in dictionary: # Itera por cada subdomínio no arquivo
-            DNS = line.strip() + '.' + domain # Monta o nome completo do subdomínio encontrado
+    domain = input()
+    # Read the dns_dict1.txt file with the subdomains
+    with open('./tools/dictionary/dns_dict1.txt', 'r') as dict:
+        dictionary = dict.readlines()
+        for line in dictionary: 
+            DNS = line.strip() + '.' + domain
             try:
-                # Resolve o endereço ip do subdomínio e exibe o resultado
                 print(DNS + ': ' + socket.gethostbyname(DNS))
             except socket.gaierror:
-                # Ignora erros ao resolver subdomínios invalidos
                 pass
-    
-# Método para consultar registros DNS específicos
+            
+# This methods queries specific DNS records
 def dnsresolver2():
     print("Enter the domain: ")
-    domain = input() # Solicita o domínio ao usuário
-    # Lê os tipos de registros DNS do arquivo dns_dict2.txt
-    registros = open('./DNS_Tools/Dictionary/dns_dict2.txt', 'r').read().splitlines()
-    resolver = dns.resolver.Resolver() # Instancia um resolvedor de DNS
-    # Define os servidores dns para as consultas
+    domain = input()
+    # Read the dns_dict2.txt file with the DNS records
+    records = open('./tools/dictionary/dns_dict2.txt', 'r').read().splitlines()
+    resolver = dns.resolver.Resolver()
     resolver.nameservers = ['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']
     
-    for registro in registros: # Itera por cada tipo de registro DNS
+    # This loop iterates over each record in the file with treatmenting for possible errors
+    for record in records:
         try:
-            # Faz a consulta DNS para o registro especificado
-            answers = resolver.resolve(domain, registro)
-            for rdata in answers: # Itera por cada resposta encontrada
-                print(f'{domain} {registro} record: {rdata}')
+            answers = resolver.resolve(domain, record)
+            for rdata in answers:
+                print(f'{domain} {record} record: {rdata}')
         except dns.resolver.NoAnswer: 
-            # Caso não haja resposta para o tipo do registro fornecido
-            print(f'No {registro} record found for {domain}')
+            print(f'No {record} record found for {domain}')
         except dns.resolver.NXDOMAIN:
-            # Caso o domínio não exista
             print(f'Domain {domain} does not exist')
         except Exception as e:
-            # Lida com outros erros genéricos
             print(f'An error occurred: {e}')

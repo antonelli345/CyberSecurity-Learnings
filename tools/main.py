@@ -1,5 +1,5 @@
-import Modules.dns_methods as dns_methods 
-import Modules.who_is as who_is 
+import modules.dns_methods as dns_methods 
+import modules.who_is as who_is 
 
 def main():
     print("Enter the desired functionality:")
@@ -21,5 +21,6 @@ def main():
         print("Invalid option")
     main()
 
+# Verify if the script is being executed
 if __name__ == "__main__":
     main()
