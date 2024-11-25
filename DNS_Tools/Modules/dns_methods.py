@@ -1,11 +1,11 @@
 import socket # Importa a biblioteca socket
 import dns.resolver # Importa a biblioteca dns.resolver
-from Modules import inputpy as inputpy # Importa o módulo inputpy
+
    
 # Método para resolver subdomínios e obter IPs    
 def dnsresolver1():
     print("Enter the domain: ")
-    domain = inputpy.inputpy()#Solicita o domínio ao usuário
+    domain = input()#Solicita o domínio ao usuário
     #Abre o arquivo dns_dict1.txt com os subdomínios
     with open('./DNS_Tools/Dictionary/dns_dict1.txt', 'r') as dict:
         dictionary = dict.readlines() # Lê as linhas do arquivo
@@ -21,7 +21,7 @@ def dnsresolver1():
 # Método para consultar registros DNS específicos
 def dnsresolver2():
     print("Enter the domain: ")
-    domain = inputpy.inputpy() # Solicita o domínio ao usuário
+    domain = input() # Solicita o domínio ao usuário
     # Lê os tipos de registros DNS do arquivo dns_dict2.txt
     registros = open('./DNS_Tools/Dictionary/dns_dict2.txt', 'r').read().splitlines()
     resolver = dns.resolver.Resolver() # Instancia um resolvedor de DNS
