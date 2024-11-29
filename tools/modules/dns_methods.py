@@ -3,7 +3,7 @@ import dns.resolver
 
    
 # This methods resolves subdomains and get IPs with treatmenting for possible errors   
-def dnsresolver1():
+def resolve_subdomains():
     print("Enter the domain: ")
     domain = input()
     # Read the dns_dict1.txt file with the subdomains
@@ -17,7 +17,7 @@ def dnsresolver1():
                 pass
             
 # This methods queries specific DNS records
-def dnsresolver2():
+def query_dns_records():
     print("Enter the domain: ")
     domain = input()
     # Read the dns_dict2.txt file with the DNS records

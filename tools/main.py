@@ -10,9 +10,9 @@ def main():
     option = input()
     # Call the desired function
     if option == '1':
-        dns_methods.dnsresolver1()
+        dns_methods.resolve_subdomains()
     elif option == '2':
-        dns_methods.dnsresolver2()
+        dns_methods.query_dns_records()
     elif option == '3':
         who_is.whoisresolver()
     elif option == '0': 
