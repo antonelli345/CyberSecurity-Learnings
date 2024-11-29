@@ -7,12 +7,12 @@ def resolve_subdomains():
     print("Enter the domain: ")
     domain = input()
     # Read the dns_dict1.txt file with the subdomains
-    with open('./tools/dictionary/dns_dict1.txt', 'r') as dict:
-        dictionary = dict.readlines()
+    with open('./tools/wordlist/dns_dict1.txt', 'r') as subdomain_file:
+        dictionary = subdomain_file.readlines()
         for line in dictionary: 
-            DNS = line.strip() + '.' + domain
+            full_domain = line.strip() + '.' + domain
             try:
-                print(DNS + ': ' + socket.gethostbyname(DNS))
+                print(full_domain + ': ' + socket.gethostbyname(full_domain))
             except socket.gaierror:
                 pass
             
@@ -21,7 +21,7 @@ def query_dns_records():
     print("Enter the domain: ")
     domain = input()
     # Read the dns_dict2.txt file with the DNS records
-    records = open('./tools/dictionary/dns_dict2.txt', 'r').read().splitlines()
+    records = open('./tools/wordlist/dns_dict2.txt', 'r').read().splitlines()
     resolver = dns.resolver.Resolver()
     resolver.nameservers = ['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']
     
