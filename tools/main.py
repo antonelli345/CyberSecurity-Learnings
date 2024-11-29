@@ -14,7 +14,7 @@ def main():
     elif option == '2':
         dns_methods.query_dns_records()
     elif option == '3':
-        who_is.whoisresolver()
+        who_is.whois_resolver()
     elif option == '0': 
         return()
     else:

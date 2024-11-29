@@ -1,7 +1,7 @@
 import whois
 from datetime import date
 
-def whoisresolver():
+def whois_resolver():
     print("Enter the domain:")
     domain = whois.whois(input())
     print("1 - No need output in a file")
@@ -15,5 +15,5 @@ def whoisresolver():
             file.write(domain.text) # Write the output to the file
     else:
         print("Invalid option")
-        whoisresolver()
+        whois_resolver()
 
