@@ -1,13 +1,9 @@
 import socket
-import dns.resolver
-
-   
+import dns.resolver  
 # This methods resolves subdomains and get IPs with treatmenting for possible errors   
-def resolve_subdomains():
-    print("Enter the domain: ")
-    domain = input()
+def resolve_subdomains(domain: str, file: bool = False): # Receives the domain as a parameter
     # Read the dns_dict1.txt file with the subdomains
-    with open('./tools/wordlist/dns_dict1.txt', 'r') as subdomain_file:
+    with open('/tools/worldlist/dns_dict1.txt', 'r') as subdomain_file:
         dictionary = subdomain_file.readlines()
         for line in dictionary: 
             full_domain = line.strip() + '.' + domain
@@ -16,12 +12,9 @@ def resolve_subdomains():
             except socket.gaierror:
                 pass
             
-# This methods queries specific DNS records
-def query_dns_records():
-    print("Enter the domain: ")
-    domain = input()
+def query_dns_records(domain: str, file: bool = False):
     # Read the dns_dict2.txt file with the DNS records
-    records = open('./tools/wordlist/dns_dict2.txt', 'r').read().splitlines()
+    records = open('/tools/wordlist/dns_dict2.txt', 'r').read().splitlines()
     resolver = dns.resolver.Resolver()
     resolver.nameservers = ['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']
     
