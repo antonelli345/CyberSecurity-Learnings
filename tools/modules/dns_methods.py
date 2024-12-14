@@ -2,7 +2,7 @@ import socket
 import dns.resolver  
 import os
 
-def resolve_subdomains(domain: str, file: bool = False):
+def resolve_subdomains(domain: str):
     # Path to the wordlist file 
     current_dir = os.path.dirname(os.path.abspath(__file__))  # path of script
     wordlist_path = os.path.join(current_dir, "../worldlist/dns_dict1.txt")  # relative path to wordlist
@@ -19,7 +19,7 @@ def resolve_subdomains(domain: str, file: bool = False):
         print(f"Error: Wordlist file not found at {wordlist_path}")
         raise            
             
-def query_dns_records(domain: str, file: bool = False):
+def query_dns_records(domain: str):
     # path to the wordlist file
     current_dir = os.path.dirname(os.path.abspath(__file__))
     wordlist_path = os.path.join(current_dir, "../worldlist/dns_dict2.txt")
