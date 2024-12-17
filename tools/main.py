@@ -27,12 +27,12 @@ def main(
         output.append("\n".join(whois_result))    
     if R: # Resolve subdomains
         typer.echo(f"Resolving subdomains for {domain}")
-        dns_methods.resolve_subdomains(domain)
-        output.append("\n" .join(dns_methods.resolve_subdomains))
+        subdomains_result = dns_methods.resolve_subdomains(domain)
+        output.append("\n" .join(subdomains_result))
     if Q: # Query specific DNS records
         typer.echo(f"Querying specific DNS records for {domain}")
-        dns_methods.query_dns_records(domain)   
-        output.append("\n" .join(dns_methods.query_dns_records))
+        dns_results = dns_methods.query_dns_records(domain)   
+        output.append("\n" .join(dns_results))
         
     if file:
         # Relative path to the output directory
@@ -42,7 +42,7 @@ def main(
         os.makedirs(output_dir, exist_ok=True)
         try:
             # Open the file in write mode
-            with open(output_path, "w") as f:
+            with open(output_path, "w", encoding = "utf-8") as f:
                 f.write("\n\n".join(output))
             typer.echo(f"Output saved to {output_path}")
         except Exception as e:

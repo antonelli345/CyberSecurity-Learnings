@@ -17,7 +17,8 @@ def resolve_subdomains(domain: str):
 
     except FileNotFoundError:
         print(f"Error: Wordlist file not found at {wordlist_path}")
-        raise            
+        raise   
+    return full_domain
             
 def query_dns_records(domain: str):
     # path to the wordlist file
@@ -26,14 +27,20 @@ def query_dns_records(domain: str):
     records = open(wordlist_path, 'r').read().splitlines()
     resolver = dns.resolver.Resolver()
     resolver.nameservers = ['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']
+    output = [] # For return the output 
     for record in records:
         try:
             answers = resolver.resolve(domain, record)
             for rdata in answers:
-                print(f'{domain} {record} record: {rdata}')
+                result = f'{domain} {record} record: {rdata}'
+                output.append(result)
         except dns.resolver.NoAnswer: 
-            print(f'No {record} record found for {domain}')
+            result = f'No {record} record found for {domain}'
+            output.append(result)
         except dns.resolver.NXDOMAIN:
-            print(f'Domain {domain} does not exist')
+            result = f'Domain {domain} does not exist'
+            output.append(result)
         except Exception as e:
-            print(f'An error occurred: {e}')
+            result = f'An error occurred: {e}'
+            output.append(result)
+    return output
