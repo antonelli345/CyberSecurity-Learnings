@@ -2,7 +2,8 @@ import typer
 import os
 from datetime import date
 import modules.dns_methods as dns_methods 
-import modules.who_is as who_is 
+import modules.who_is as who_is
+import modules.geo_loc as geo_loc
 
 app = typer.Typer()
 
@@ -13,9 +14,9 @@ def main(
     W: bool = typer.Option(False, "--whois", "-W", help="WHOIS lookup"),
     R: bool = typer.Option(False, "--resolve", "-R", help="Resolve subdomains"),
     Q: bool = typer.Option(False, "--query", "-Q", help="Query specific DNS records"),
-
+    G: bool = typer.Option(False, "--geolocate", "-G", help="Geolocation"),
 ):    
-    if not any([W, R, Q]):
+    if not any([W, R, Q, G]):
         print("No action specified. Use --help for more information.")
         raise typer.Exit(code=1)
     
@@ -33,6 +34,10 @@ def main(
         typer.echo(f"Querying specific DNS records for {domain}")
         dns_results = dns_methods.query_dns_records(domain)   
         output.append("\n" .join(dns_results))
+    if G: # Geolocation
+        typer.echo(f"Performing geolocation for {domain}")
+        geo_loc_result = geo_loc.get_geo_loc(domain)
+        output.append("\n".join(geo_loc_result))
         
     if file:
         # Relative path to the output directory
