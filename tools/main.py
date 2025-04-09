@@ -4,6 +4,7 @@ from datetime import date
 import modules.dns_methods as dns_methods 
 import modules.who_is as who_is
 import modules.geo_loc as geo_loc
+import modules.nmaper as nmaper
 
 app = typer.Typer()
 
@@ -15,8 +16,11 @@ def main(
     R: bool = typer.Option(False, "--resolve", "-R", help="Resolve subdomains"),
     Q: bool = typer.Option(False, "--query", "-Q", help="Query specific DNS records"),
     G: bool = typer.Option(False, "--geolocate", "-G", help="Geolocation"),
+    S: bool = typer.Option(False, "--scan", "-S", help="Port scan"),
+    max_port: int = typer.Option(1000, "--max-port", "-M", help="Maximum port to scan (default: 1000)")
+
 ):    
-    if not any([W, R, Q, G]):
+    if not any([W, R, Q, G, S]):
         print("No action specified. Use --help for more information.")
         raise typer.Exit(code=1)
     
@@ -38,20 +42,27 @@ def main(
         typer.echo(f"Performing geolocation for {domain}")
         geo_loc_result = geo_loc.get_geo_loc(domain)
         output.append("\n".join(geo_loc_result))
-        
+    if S: # Port scan
+        typer.echo(f"Performing port scan for {domain}")
+        port_scan_result = nmaper.scan_ports(domain, max_port)
+        scan_output = ["\nDNS                 Port   Protocol", "-" * 40]
+        for dns, port, proto in port_scan_result:
+            scan_output.append(f"{dns:<20} {port:<6} {proto.upper()}")
+        output.append("\n".join(scan_output))
+   
+    typer.echo("\n\n".join(output))
+
     if file:
-        # Relative path to the output directory
         output_dir = "./tools/out"
         output_path = os.path.join(output_dir, f"{domain}_output.txt")
-        # Validating the output directory
         os.makedirs(output_dir, exist_ok=True)
         try:
-            # Open the file in write mode
-            with open(output_path, "w", encoding = "utf-8") as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 f.write("\n\n".join(output))
-            typer.echo(f"Output saved to {output_path}")
+            typer.echo(f"\n[✔] Output saved to {output_path}")
         except Exception as e:
-            typer.echo(f"Error while saving the file: {e}")    
+            typer.echo(f"\n[!] Error while saving the file: {e}")
+    
         
 # Verify if the script is being executed
 if __name__ == "__main__":
