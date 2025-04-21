@@ -1,9 +1,9 @@
 import typer
-import os
 from modules.scanner.dns import resolve_subdomains, query_dns_records
 from modules.scanner.geoloc import get_geo_loc
 from modules.scanner.whois import whois_resolver
 from modules.scanner.nmaper import scan_ports
+from modules.utils.export import save_to_txt
 app = typer.Typer()
 
 
@@ -55,15 +55,7 @@ def main(
         output.append("\n".join(scan_output))
     typer.echo("\n\n".join(output))
     if file:
-        output_dir = "./out"
-        output_path = os.path.join(output_dir, f"{domain}_output.txt")
-        os.makedirs(output_dir, exist_ok=True)
-        try:
-            with open(output_path, "w", encoding="utf-8") as f:
-                f.write("\n\n".join(output))
-            typer.echo(f"\n[✔] Output saved to {output_path}")
-        except Exception as e:
-            typer.echo(f"\n[!] Error while saving the file: {e}")
+        save_to_txt(domain, output)
 # Verify if the script is being executed
 
 
