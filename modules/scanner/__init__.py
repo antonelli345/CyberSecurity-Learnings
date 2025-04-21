@@ -1,7 +1,7 @@
-from .dns import resolve_subdomains, query_dns_records
-from .geoloc import get_geo_loc
-from .whois import whois_resolver
-from .nmaper import scan_ports
+from modules.scanner.dns import resolve_subdomains, query_dns_records
+from modules.scanner.geoloc import get_geo_loc
+from modules.scanner.whois import whois_resolver
+from modules.scanner.nmaper import scan_ports
 
 __all__ = [
     "resolve_subdomains",

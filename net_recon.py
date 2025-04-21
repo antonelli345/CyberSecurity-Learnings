@@ -1,19 +1,30 @@
 import typer
 import os
-from datetime import date
-from modules.scanner import (resolve_subdomains, query_dns_records, get_geo_loc, whois_resolver, scan_ports)
+from modules.scanner.dns import resolve_subdomains, query_dns_records
+from modules.scanner.geoloc import get_geo_loc
+from modules.scanner.whois import whois_resolver
+from modules.scanner.nmaper import scan_ports
 app = typer.Typer()
+
 
 @app.command()
 def main(
-    domain: str = typer.Argument(..., help="The domain to analyze (e.g., example.com)"), 
-    file: bool = False, 
+    domain: str = typer.Argument(
+        ..., help="The domain to analyze (e.g., example.com)"
+    ),
+    file: bool = False,
     W: bool = typer.Option(False, "--whois", "-W", help="WHOIS lookup"),
-    R: bool = typer.Option(False, "--resolve", "-R", help="Resolve subdomains"),
-    Q: bool = typer.Option(False, "--query", "-Q", help="Query specific DNS records"),
+    R: bool = typer.Option(
+        False, "--resolve", "-R", help="Resolve subdomains"
+    ),
+    Q: bool = typer.Option(
+        False, "--query", "-Q", help="Query specific DNS records"
+    ),
     G: bool = typer.Option(False, "--geolocate", "-G", help="Geolocation"),
     S: bool = typer.Option(False, "--scan", "-S", help="Port scan"),
-    max_port: int = typer.Option(1000, "--max-port", "-M", help="Maximum port to scan (default: 1000)")
+    max_port: int = typer.Option(
+        1000, "--max-port", "-M", help="Maximum port to scan (default: 1000)"
+    )
 
 ):    
     if not any([W, R, Q, G, S]):
@@ -22,23 +33,23 @@ def main(
     
     output = []
     
-    if W: # Whois lookup      
+    if W:  # Whois lookup      
         typer.echo(f"Performing WHOIS lookup for {domain}")
         whois_result = whois_resolver(domain)
         output.append("\n".join(whois_result))    
-    if R: # Resolve subdomains
+    if R:  # Resolve subdomains
         typer.echo(f"Resolving subdomains for {domain}")
         subdomain_results = resolve_subdomains(domain)
         output.append("\n".join(subdomain_results))
-    if Q: # Query specific DNS records
+    if Q:  # Query specific DNS records
         typer.echo(f"Querying specific DNS records for {domain}")
         dns_results = query_dns_records(domain)
         output.append("\n".join(dns_results))
-    if G: # Geolocation
+    if G:  # Geolocation
         typer.echo(f"Performing geolocation for {domain}")
         geo_loc_result = get_geo_loc(domain)
         output.append("\n".join(geo_loc_result))
-    if S: # Port scan
+    if S:  # Port scan
         typer.echo(f"Performing port scan for {domain}")
         port_scan_result = scan_ports(domain, max_port)
         scan_output = ["\nDNS                 Port   Protocol", "-" * 40]

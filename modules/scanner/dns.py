@@ -1,9 +1,10 @@
 import dns.resolver  
 import os
 
+
 def resolve_subdomains(domain: str):
     # Path to the wordlist file 
-    wordlist_path = os.path.join("./worldlist/dns_dict1.txt")  # relative path to wordlist
+    wordlist_path = os.path.join("./worldlist/dns_dict1.txt")
     output = []
     try:
         with open(wordlist_path, "r") as subdomain_file:
@@ -19,10 +20,11 @@ def resolve_subdomains(domain: str):
         output.append(result)
         raise   
     return output
-            
+
+        
 def query_dns_records(domain: str):
     # path to the wordlist file
-    wordlist_path = os.path.join("./worldlist/dns_dict2.txt") # relative path to wordlist
+    wordlist_path = os.path.join("./worldlist/dns_dict2.txt")
     records = open(wordlist_path, 'r').read().splitlines()
     resolver = dns.resolver.Resolver()
     resolver.nameservers = ['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']
