@@ -25,18 +25,15 @@ def main(
     max_port: int = typer.Option(
         1000, "--max-port", "-M", help="Maximum port to scan (default: 1000)"
     )
-
-):    
+):
     if not any([W, R, Q, G, S]):
         print("No action specified. Use --help for more information.")
         raise typer.Exit(code=1)
-    
     output = []
-    
-    if W:  # Whois lookup      
+    if W:  # Whois lookup
         typer.echo(f"Performing WHOIS lookup for {domain}")
         whois_result = whois_resolver(domain)
-        output.append("\n".join(whois_result))    
+        output.append("\n".join(whois_result))
     if R:  # Resolve subdomains
         typer.echo(f"Resolving subdomains for {domain}")
         subdomain_results = resolve_subdomains(domain)
@@ -56,9 +53,7 @@ def main(
         for dns, port, proto in port_scan_result:
             scan_output.append(f"{dns:<20} {port:<6} {proto.upper()}")
         output.append("\n".join(scan_output))
-   
     typer.echo("\n\n".join(output))
-
     if file:
         output_dir = "./out"
         output_path = os.path.join(output_dir, f"{domain}_output.txt")
@@ -69,8 +64,8 @@ def main(
             typer.echo(f"\n[✔] Output saved to {output_path}")
         except Exception as e:
             typer.echo(f"\n[!] Error while saving the file: {e}")
-    
-        
 # Verify if the script is being executed
+
+
 if __name__ == "__main__":
     app()

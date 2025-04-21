@@ -9,4 +9,4 @@ __all__ = [
     "get_geo_loc",
     "whois_resolver",
     "scan_ports",
-]   
+]

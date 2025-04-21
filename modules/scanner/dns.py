@@ -1,9 +1,9 @@
-import dns.resolver  
+import dns.resolver
 import os
 
 
 def resolve_subdomains(domain: str):
-    # Path to the wordlist file 
+    # Path to the wordlist file
     wordlist_path = os.path.join("./worldlist/dns_dict1.txt")
     output = []
     try:
@@ -18,10 +18,10 @@ def resolve_subdomains(domain: str):
     except FileNotFoundError:
         result = f"Error: Wordlist file not found at {wordlist_path}"
         output.append(result)
-        raise   
+        raise
     return output
 
-        
+
 def query_dns_records(domain: str):
     # path to the wordlist file
     wordlist_path = os.path.join("./worldlist/dns_dict2.txt")
@@ -35,7 +35,7 @@ def query_dns_records(domain: str):
             for rdata in answers:
                 result = f'{domain} {record} record: {rdata}'
                 output.append(result)
-        except dns.resolver.NoAnswer: 
+        except dns.resolver.NoAnswer:
             result = f'No {record} record found for {domain}'
             output.append(result)
         except dns.resolver.NXDOMAIN:
