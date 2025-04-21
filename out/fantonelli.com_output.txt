@@ -1,0 +1,99 @@
+domain_name: FANTONELLI.COM
+registrar: NAMECHEAP INC
+registrar_url: http://www.namecheap.com
+reseller: NAMECHEAP INC
+whois_server: whois.namecheap.com
+updated_date: [datetime.datetime(2025, 3, 24, 13, 19, 30), datetime.datetime(1, 1, 1, 0, 0)]
+creation_date: 2025-03-23 13:11:50
+expiration_date: 2026-03-23 13:11:50
+name_servers: ['ART.NS.CLOUDFLARE.COM', 'ZOE.NS.CLOUDFLARE.COM']
+status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+emails: ['abuse@namecheap.com', '70c477d6b71d4de38fae7bee779f9562.protect@withheldforprivacy.com']
+dnssec: unsigned
+name: Redacted for Privacy
+org: Privacy service provided by Withheld for Privacy ehf
+address: Kalkofnsvegur 2
+city: Reykjavik
+state: Capital Region
+registrant_postal_code: 101
+country: IS
+
+Resolved: www.fantonelli.com
+Resolved: mail.fantonelli.com
+Resolved: ftp.fantonelli.com
+Resolved: webmail.fantonelli.com
+Resolved: smtp.fantonelli.com
+Resolved: pop.fantonelli.com
+Resolved: imap.fantonelli.com
+Resolved: test.fantonelli.com
+Resolved: dev.fantonelli.com
+Resolved: staging.fantonelli.com
+Resolved: api.fantonelli.com
+Resolved: admin.fantonelli.com
+Resolved: vpn.fantonelli.com
+Resolved: portal.fantonelli.com
+Resolved: remote.fantonelli.com
+Resolved: secure.fantonelli.com
+Resolved: blog.fantonelli.com
+Resolved: shop.fantonelli.com
+Resolved: support.fantonelli.com
+Resolved: cdn.fantonelli.com
+Resolved: m.fantonelli.com
+Resolved: forum.fantonelli.com
+Resolved: news.fantonelli.com
+Resolved: home.fantonelli.com
+Resolved: ns1.fantonelli.com
+Resolved: ns2.fantonelli.com
+Resolved: ns3.fantonelli.com
+Resolved: ns4.fantonelli.com
+
+fantonelli.com A record: 104.21.16.1
+fantonelli.com A record: 104.21.80.1
+fantonelli.com A record: 104.21.48.1
+fantonelli.com A record: 104.21.64.1
+fantonelli.com A record: 104.21.32.1
+fantonelli.com A record: 104.21.96.1
+fantonelli.com A record: 104.21.112.1
+fantonelli.com AAAA record: 2606:4700:3030::6815:1001
+fantonelli.com AAAA record: 2606:4700:3030::6815:5001
+fantonelli.com AAAA record: 2606:4700:3030::6815:6001
+fantonelli.com AAAA record: 2606:4700:3030::6815:2001
+fantonelli.com AAAA record: 2606:4700:3030::6815:3001
+fantonelli.com AAAA record: 2606:4700:3030::6815:7001
+fantonelli.com AAAA record: 2606:4700:3030::6815:4001
+No MX record found for fantonelli.com
+fantonelli.com NS record: art.ns.cloudflare.com.
+fantonelli.com NS record: zoe.ns.cloudflare.com.
+No TXT record found for fantonelli.com
+fantonelli.com SOA record: art.ns.cloudflare.com. dns.cloudflare.com. 2370585002 10000 2400 604800 1800
+No PTR record found for fantonelli.com
+No CNAME record found for fantonelli.com
+No SRV record found for fantonelli.com
+No NAPTR record found for fantonelli.com
+No DS record found for fantonelli.com
+No DNSKEY record found for fantonelli.com
+No RRSIG record found for fantonelli.com
+No NSEC record found for fantonelli.com
+No NSEC3 record found for fantonelli.com
+No NSEC3PARAM record found for fantonelli.com
+No TLSA record found for fantonelli.com
+No SMIMEA record found for fantonelli.com
+No OPENPGPKEY record found for fantonelli.com
+No CAA record found for fantonelli.com
+No CDNSKEY record found for fantonelli.com
+No CDS record found for fantonelli.com
+No CERT record found for fantonelli.com
+No DNAME record found for fantonelli.com
+No HINFO record found for fantonelli.com
+No KEY record found for fantonelli.com
+No LOC record found for fantonelli.com
+No RP record found for fantonelli.com
+No SPF record found for fantonelli.com
+No SSHFP record found for fantonelli.com
+No URI record found for fantonelli.com
+
+
+DNS                 Port   Protocol
+----------------------------------------
+fantonelli.com       80     HTTP
+fantonelli.com       443    HTTPS

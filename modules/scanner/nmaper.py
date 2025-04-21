@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 import socket
 
 def scan_port(domain: str, port):
@@ -15,10 +16,16 @@ def scan_port(domain: str, port):
             return None
 
 def scan_ports(domain: str, max_port=1000):
+    ports = range(1, max_port + 1) ## Set the range of ports to scan
+    # Create a ThreadPoolExecutor to scan ports concurrently
+    def task(port):
+        return scan_port(domain, port)
     output = []
-    for port in range(1, max_port + 1):
-        result = scan_port(domain, port)
-        if result:
-            output.append(result)
+    # Use ThreadPoolExecutor to scan ports concurrently
+    with ThreadPoolExecutor(max_workers=500) as executor:
+        for result in executor.map(task, ports):
+            if result:
+                output.append(result)
+
     return output
 

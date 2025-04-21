@@ -1,11 +1,9 @@
-import socket
 import dns.resolver  
 import os
 
 def resolve_subdomains(domain: str):
     # Path to the wordlist file 
-    current_dir = os.path.dirname(os.path.abspath(__file__))  # path of script
-    wordlist_path = os.path.join(current_dir, "../worldlist/dns_dict1.txt")  # relative path to wordlist
+    wordlist_path = os.path.join("./worldlist/dns_dict1.txt")  # relative path to wordlist
     output = []
     try:
         with open(wordlist_path, "r") as subdomain_file:
@@ -24,8 +22,7 @@ def resolve_subdomains(domain: str):
             
 def query_dns_records(domain: str):
     # path to the wordlist file
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    wordlist_path = os.path.join(current_dir, "../worldlist/dns_dict2.txt")
+    wordlist_path = os.path.join("./worldlist/dns_dict2.txt") # relative path to wordlist
     records = open(wordlist_path, 'r').read().splitlines()
     resolver = dns.resolver.Resolver()
     resolver.nameservers = ['8.8.8.8', '8.8.4.4', '1.1.1.1', '1.0.0.1']

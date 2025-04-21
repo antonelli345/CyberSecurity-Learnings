@@ -1,11 +1,7 @@
 import typer
 import os
 from datetime import date
-import modules.dns_methods as dns_methods 
-import modules.who_is as who_is
-import modules.geo_loc as geo_loc
-import modules.nmaper as nmaper
-
+from modules.scanner import (resolve_subdomains, query_dns_records, get_geo_loc, whois_resolver, scan_ports)
 app = typer.Typer()
 
 @app.command()
@@ -28,23 +24,23 @@ def main(
     
     if W: # Whois lookup      
         typer.echo(f"Performing WHOIS lookup for {domain}")
-        whois_result = who_is.whois_resolver(domain)
+        whois_result = whois_resolver(domain)
         output.append("\n".join(whois_result))    
     if R: # Resolve subdomains
         typer.echo(f"Resolving subdomains for {domain}")
-        subdomains_result = dns_methods.resolve_subdomains(domain)
-        output.append("\n" .join(subdomains_result))
+        subdomain_results = resolve_subdomains(domain)
+        output.append("\n".join(subdomain_results))
     if Q: # Query specific DNS records
         typer.echo(f"Querying specific DNS records for {domain}")
-        dns_results = dns_methods.query_dns_records(domain)   
-        output.append("\n" .join(dns_results))
+        dns_results = query_dns_records(domain)
+        output.append("\n".join(dns_results))
     if G: # Geolocation
         typer.echo(f"Performing geolocation for {domain}")
-        geo_loc_result = geo_loc.get_geo_loc(domain)
+        geo_loc_result = get_geo_loc(domain)
         output.append("\n".join(geo_loc_result))
     if S: # Port scan
         typer.echo(f"Performing port scan for {domain}")
-        port_scan_result = nmaper.scan_ports(domain, max_port)
+        port_scan_result = scan_ports(domain, max_port)
         scan_output = ["\nDNS                 Port   Protocol", "-" * 40]
         for dns, port, proto in port_scan_result:
             scan_output.append(f"{dns:<20} {port:<6} {proto.upper()}")
@@ -53,7 +49,7 @@ def main(
     typer.echo("\n\n".join(output))
 
     if file:
-        output_dir = "./tools/out"
+        output_dir = "./out"
         output_path = os.path.join(output_dir, f"{domain}_output.txt")
         os.makedirs(output_dir, exist_ok=True)
         try:
