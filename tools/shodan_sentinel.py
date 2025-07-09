@@ -1,7 +1,13 @@
 import typer
+import sys
+import os
 from modules.shodan import search
 from modules.shodan import ip_info
 from modules.shodan import vuln
+# Ensure the modules directory is in the Python path
+# This allows us to import modules from the parent directory
+# This is necessary if the script is run from a different directory
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
 app = typer.Typer()

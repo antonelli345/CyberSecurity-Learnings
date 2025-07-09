@@ -1,10 +1,16 @@
 import typer
+import sys
+import os
 from modules.scanner.dns import resolve_subdomains, query_dns_records
 from modules.scanner.geoloc import get_geo_loc
 from modules.scanner.whois import whois_resolver
 from modules.scanner.nmaper import scan_ports
 from modules.utils.export import save_to_txt
-import modules
+# Ensure the modules directory is in the Python path
+# This allows us to import modules from the parent directory
+# This is necessary if the script is run from a different directory
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 app = typer.Typer()
 
