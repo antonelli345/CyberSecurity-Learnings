@@ -39,12 +39,12 @@ def shodan_search(
 
 @app.command(name="ip-info")
 def ip_info_command():
-    ip_info.ip_info()
+    ip_info.ip_info() # type: ignore
 
 
 @app.command(name="vuln")
 def vuln_check():
-    vuln.vuln_check()
+    vuln.vuln_check() # type: ignore
 
 
 if __name__ == "__main__":
