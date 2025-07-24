@@ -3,7 +3,7 @@ import typer
 import os
 import sys
 from dotenv import load_dotenv
-from modules.utils.export import save_to_csv
+from cybersec.modules.utils.export import save_to_csv
 from pathlib import Path
 
 

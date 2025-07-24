@@ -1,6 +1,5 @@
 import typer
 from cybersec.tools import shodan_sentinel, hash_checker_tool, net_recon
-
 app = typer.Typer()
 
 # This is the main entry point for the CLI application
