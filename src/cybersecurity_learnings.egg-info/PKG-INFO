@@ -1,0 +1,95 @@
+Metadata-Version: 2.4
+Name: cybersecurity-learnings
+Version: 2025.1.0
+Summary: This repository has a collection of learnings, programs and tools related to the cybersec area.
+Author-email: Fabio Antonelli <fabioantonellii2016@gmail.com>
+Maintainer-email: Fabio Antonelli <fabioantonellii2016@gmail.com>
+License-Expression: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohappyeyeballs==2.4.4
+Requires-Dist: aiohttp==3.11.11
+Requires-Dist: aiosignal==1.3.2
+Requires-Dist: appnope==0.1.4
+Requires-Dist: asttokens==2.4.1
+Requires-Dist: attrs==24.3.0
+Requires-Dist: cachetools==5.5.0
+Requires-Dist: certifi==2024.12.14
+Requires-Dist: charset-normalizer==3.4.0
+Requires-Dist: click==8.1.7
+Requires-Dist: click-plugins==1.1.1.2
+Requires-Dist: colorama==0.4.6
+Requires-Dist: comm==0.2.2
+Requires-Dist: decorator==5.1.1
+Requires-Dist: dnspython==2.7.0
+Requires-Dist: executing==2.1.0
+Requires-Dist: filelock==3.18.0
+Requires-Dist: frozenlist==1.5.0
+Requires-Dist: idna==3.10
+Requires-Dist: ipinfo==5.1.1
+Requires-Dist: ipython==8.29.0
+Requires-Dist: jedi==0.19.2
+Requires-Dist: jupyter_client==8.6.3
+Requires-Dist: markdown-it-py==3.0.0
+Requires-Dist: mdurl==0.1.2
+Requires-Dist: multidict==6.1.0
+Requires-Dist: nest-asyncio==1.6.0
+Requires-Dist: packaging==24.2
+Requires-Dist: parso==0.8.4
+Requires-Dist: pexpect==4.9.0
+Requires-Dist: platformdirs==4.3.6
+Requires-Dist: prompt_toolkit==3.0.48
+Requires-Dist: propcache==0.2.1
+Requires-Dist: psutil==6.1.0
+Requires-Dist: ptyprocess==0.7.0
+Requires-Dist: pure_eval==0.2.3
+Requires-Dist: Pygments==2.18.0
+Requires-Dist: python-dateutil==2.9.0.post0
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: python-whois==0.9.5
+Requires-Dist: pyzmq==26.2.0
+Requires-Dist: requests==2.32.3
+Requires-Dist: requests-file==2.1.0
+Requires-Dist: rich==13.9.4
+Requires-Dist: shellingham==1.5.4
+Requires-Dist: shodan==1.31.0
+Requires-Dist: six==1.16.0
+Requires-Dist: stack-data==0.6.3
+Requires-Dist: tldextract==5.3.0
+Requires-Dist: tornado==6.4.1
+Requires-Dist: traitlets==5.14.3
+Requires-Dist: typer==0.15.1
+Requires-Dist: typing_extensions==4.12.2
+Requires-Dist: urllib3==2.2.3
+Requires-Dist: wcwidth==0.2.13
+Requires-Dist: whois==1.20240129.2
+Requires-Dist: xlsxwriter==3.2.5
+Requires-Dist: yarl==1.18.3
+Provides-Extra: dev
+Requires-Dist: ipykernel==6.29.5; extra == "dev"
+Requires-Dist: debugpy==1.8.8; extra == "dev"
+Requires-Dist: matplotlib-inline==0.1.7; extra == "dev"
+Requires-Dist: jupyter_core==5.7.2; extra == "dev"
+Dynamic: license-file
+
+# Cybersecurity Learnings
+
+Bem-vindo ao repositório **Cybersecurity Learnings**! Aqui compartilho meu aprendizado contínuo na área de cibersegurança, documentando tópicos de interesse, ferramentas que desenvolvo e recursos que considero úteis. Este projeto é open-source para ajudar quem também está começando ou aprimorando seus conhecimentos em cibersegurança.
+
+## 🔥 Objetivo
+Explorar conceitos e práticas fundamentais de cibersegurança, com foco em aprender, experimentar e desenvolver ferramentas úteis para a área. Este repositório servirá como um registro do meu progresso e um ponto de partida para projetos futuros.
+
+### Projetos Futuros
+- Desenvolvimento de um scanner de portas em Python
+- Exploração de técnicas de criptografia e análise
+
+
+## 💡 Como Contribuir
+Se você também tem interesse em cibersegurança, sinta-se à vontade para abrir uma **issue** ou enviar um **pull request** com sugestões, correções ou novas ideias!
+
+## 📄 Licença
+Este projeto é licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+---
+
+Acompanhe este repositório para ver minhas descobertas e novos projetos! 😊

@@ -1,9 +1,9 @@
 import typer
 import sys
 import os
-from modules.shodan import search
-from modules.shodan import ip_info
-from modules.shodan import vuln
+#from cybersec.modules.shodan import search
+#from cybersec.modules.shodan import ip_info
+#from cybersec.modules.shodan import vuln
 # Ensure the modules directory is in the Python path
 # This allows us to import modules from the parent directory
 # This is necessary if the script is run from a different directory
